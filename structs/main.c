@@ -8,19 +8,36 @@ struct Person {
   char* name;
 };
 
+// another way of defining a struct 
+typedef struct {
+  int age;
+  char* name;
+} Hero;
+
 int main(void) {
   // declaring a new struct 
   struct Person em;
+  
+  // declaring typedef struct 
+  Hero ap;
 
   // set data to the struct 
   em.age = 30;
   em.name = malloc(6 * sizeof(char));
   strcpy(em.name, "Steve");
 
+  ap.age = 30;
+  ap.name = malloc(10 * sizeof(char));
+  strcpy(ap.name, "captian");
+
   printf("age: %d\nname: %s\n\n", em.age, em.name);
+  printf("age: %d\nname: %s\n\n", ap.age, ap.name);
 
   // creating a pointer to the stuct 
   struct Person *em_ptr = &em;
+
+  // creating a pointer to the typedef struct 
+  Hero *ap_pointer = &em;
 
   // set data to the struct via pointers 
   (*em_ptr).age = 40;
